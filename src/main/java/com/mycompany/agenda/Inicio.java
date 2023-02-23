@@ -109,6 +109,11 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table);
 
         mostrar.setText("Mostrar");
+        mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,8 +231,7 @@ public class Inicio extends javax.swing.JFrame {
 				}else {
 					JOptionPane.showMessageDialog(null,"El campo nombre esta vacio");
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
+  /**
      * @param args the command line arguments
      */
 
@@ -261,6 +265,21 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
     }
+    private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
+       
+        Object o []=null;
+        for (int i=0;i< agenda.size();i++){
+            Clases c = (Clases) agenda.get(i);
+            M.addRow(o);
+            M.setValueAt(c.getNombre(),i,0);
+            M.setValueAt(c.getApellido(),i,1);
+            M.setValueAt(c.getTelefono(),i,2);
+            M.setValueAt(c.getEmail(),i,3);
+        }
+        
+    }//GEN-LAST:event_mostrarActionPerformed
+
+  
     DefaultTableModel M;
 	
 	private void CrearModelo() {
