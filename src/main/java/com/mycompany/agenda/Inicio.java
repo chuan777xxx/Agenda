@@ -3,12 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.agenda;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author chuan
  */
 public class Inicio extends javax.swing.JFrame {
+    	ArrayList agenda= new ArrayList();
 
     /**
      * Creates new form Inicio
@@ -81,6 +84,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,10 +167,44 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String n = textonombre.getText();
+        String a = textoapellido.getText();
+        String t = textotelefono.getText();
+        String e = textoemail.getText();
+            if(!n.isEmpty()) {
+					if(!a.isEmpty()) {
+						if(!t.isEmpty()) {
+							if(!e.isEmpty()) {
+								
+								Clases clas = new Clases(n,a,Integer.parseInt(t),e);
+								agenda.add(clas);
+								
+								JOptionPane.showMessageDialog(null,"Contacto Guardado");
+								
+								textonombre.setText("");
+								textoapellido.setText("");
+								textotelefono.setText("");
+								textoemail.setText("");
+								
+							}else {
+								JOptionPane.showMessageDialog(null,"El campo email esta vacio");
+							}
+						}else {
+							JOptionPane.showMessageDialog(null,"El campo telefono esta vacio");
+						}
+						
+					}else {
+						JOptionPane.showMessageDialog(null,"El campo apellido esta vacio");
+					}
+				}else {
+					JOptionPane.showMessageDialog(null,"El campo nombre esta vacio");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
